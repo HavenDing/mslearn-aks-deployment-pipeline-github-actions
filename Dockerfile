@@ -1,12 +1,7 @@
 FROM nginx:1.18
 
 # Install dependencies, including a newer Node.js version and other required tools
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - &&
-apt-get update -y &&
-apt-get install -y git curl nodejs &&
-curl -sL https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_extended_0.72.0_Linux-64bit.tar.gz | tar -xz hugo &&
-mv hugo /usr/bin &&
-npm install -g postcss-cli autoprefixer postcss
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update -y && apt-get install -y git curl nodejs && curl -sL https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_extended_0.72.0_Linux-64bit.tar.gz | tar -xz hugo && mv hugo /usr/bin && npm install -g postcss-cli autoprefixer postcss
 
 # Clone the repository
 RUN git clone https://github.com/MicrosoftDocs/mslearn-aks-deployment-pipeline-github-actions /contoso-website
